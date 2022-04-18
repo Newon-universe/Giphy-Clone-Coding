@@ -367,7 +367,6 @@ fun TrendingItems(
         }
         .build()
 
-    val favoriteList = myViewModel.favList.collectAsState().value
 
     val pagingData = homeViewModel.getPager(
         20,
@@ -380,6 +379,8 @@ fun TrendingItems(
         items(pagingData.itemSnapshotList) { item ->
 
             item?.let {
+                val favoriteList = myViewModel.favList.collectAsState().value
+
                 val size = with(LocalDensity.current) {
                     CalculateScaledSize(
                         context,
